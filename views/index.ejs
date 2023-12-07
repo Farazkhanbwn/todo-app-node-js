@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display List of Todo</title>
+
+    <style>
+        table th,
+        table td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add A Todo</h1>
+
+    <form action="/add-todo" method="post">
+        <input type="text" name="todoTask" placeholder="Enter a Todo">
+        <input type="text" name="todoDescription" placeholder="Enter a todoDescription">
+        <input type="submit" value="Submit Todo">
+    </form>
+
+    <h1>Todo Items</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% todos.map((todo)=> { %>
+                <tr>
+                    <td>
+                        <%= todo.todoTask %>
+                    </td>
+                    <td>
+                        <%= todo.todoDescription %>
+                    </td>
+                    <td>
+                        <a href="/delete-user/<%= todo.id%>">Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>
