@@ -4,7 +4,9 @@ const { todoRequestValidators } = require("./todo-model");
 
 const todoRouter = express.Router();
 
-todoRouter.get("/", todoController.getAllTodos);
+todoRouter.get("/all", todoController.getAllTodos);
+
+todoRouter.get("/:id", todoController.getTodoById);
 
 todoRouter.post("/add", todoRequestValidators, todoController.addTodo);
 

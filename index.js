@@ -1,8 +1,11 @@
 const express = require("express");
 const { connectToMongoDb } = require("./config/db");
 const { todoRouter } = require("./todos/todo-router");
+const cors = require("cors");
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 
 // configuration middleware
 app.set("view engine", "ejs");
