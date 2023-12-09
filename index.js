@@ -2,6 +2,7 @@ const express = require("express");
 const { connectToMongoDb } = require("./config/db");
 const { todoRouter } = require("./todos/todo-router");
 const cors = require("cors");
+const morgan = require("morgan");
 
 const app = express();
 app.use(express.json());
@@ -11,7 +12,9 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
-// api route
+// Morgan Use
+app.use(morgan("tiny"));
+
 app.use("/todo", todoRouter);
 
 async function initNodeJsApplication() {
